@@ -16,18 +16,30 @@ public class Main {
         do {
             System.out.print("Requested amount (€1k - €1M): ");
             requestedAmount = read.nextInt();
-        } while(requestedAmount < 1000 || requestedAmount > 1000000);
+            if(requestedAmount >= 1000 && requestedAmount <= 1000000) {
+                break;
+            }
+            System.out.print("Please type a number between 1k and 1M\n");
+        } while(true);
 
         do {
             System.out.print("Interest rate (1 - 30): ");
             annualInterestRate = read.nextDouble();
-        } while(annualInterestRate < 1 || annualInterestRate > 30);
+            if(annualInterestRate > 0 && annualInterestRate <= 30) {
+                break;
+            }
+            System.out.print("Please type a number between 1 and 30\n");
+        } while(true);
         double monthlyInterestRate = annualInterestRate / 100 / MONTHS;
 
         do {
             System.out.print("Period (1 - 30): ");
             period = read.nextInt();
-        } while(period < 1 || period > 30);
+            if(period > 0 && period <= 30) {
+                break;
+            }
+            System.out.print("Please type a number between 1 and 30\n");
+        } while(true);
 
 // calculate the monthly payment for the mortgage
         double x = Math.pow((1 + monthlyInterestRate), (period * MONTHS));
